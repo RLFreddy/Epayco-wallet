@@ -1,0 +1,36 @@
+import { ApiProperty } from '@nestjs/swagger';
+import {
+  IsNotEmpty,
+  IsNumber,
+  IsPositive,
+  IsString,
+  Length,
+} from 'class-validator';
+
+export class RechargeWalletDto {
+  @ApiProperty({
+    description: 'Documento de identidad del cliente',
+    example: '10203040',
+  })
+  @IsString()
+  @IsNotEmpty()
+  @Length(5, 20)
+  document: string;
+
+  @ApiProperty({
+    description: 'Número de celular del cliente',
+    example: '3001234567',
+  })
+  @IsString()
+  @IsNotEmpty()
+  @Length(10, 15)
+  cellphone: string;
+
+  @ApiProperty({
+    description: 'Valor a recargar en la billetera',
+    example: 50000,
+  })
+  @IsNumber()
+  @IsPositive()
+  value: number;
+}
