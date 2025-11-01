@@ -1,0 +1,32 @@
+<html>
+  <head>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+        color: #333;
+      }
+      .container {
+        padding: 20px;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        max-width: 400px;
+        margin: auto;
+      }
+      .token {
+        font-size: 3em;
+        letter-spacing: 8px;
+        color: #007bff;
+        margin: 20px 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div class='container'>
+      <h2>Hola, {{name}}!</h2>
+      <p>Usa el siguiente código para confirmar tu pago:</p>
+      <p class='token'>{{token}}</p>
+      <p><small>Este código es válido por 5 minutos.</small></p>
+    </div>
+  </body>
+</html>
