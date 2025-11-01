@@ -14,6 +14,63 @@ services:
     networks:
       - wallet-net
 
+  # Servicio 1: Acceso a la Base de Datos
+  db-service:
+    container_name: wallet-db-service
+    build:
+      context: ./db-service
+      dockerfile: Dockerfile
+    restart: always
+    environment:
+      MYSQL_HOST: ${MYSQL_HOST}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PORT: ${MYSQL_PORT}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      PORT: ${DB_SERVICE_PORT}
+    # ports:
+    #   - "${DB_SERVICE_PORT}:${DB_SERVICE_PORT}"
+    depends_on:
+      - mysql-db
+    networks:
+      - wallet-net
+
+  # Servicio 2: API Gateway para el Cliente
+  api-gateway:
+    container_name: wallet-api-gateway
+    build:
+      context: ./api-gateway
+      dockerfile: Dockerfile
+    restart: always
+    environment:
+      PORT: ${API_GATEWAY_PORT}
+      DB_SERVICE_URL: ${DB_SERVICE_URL}
+      MAIL_HOST: ${MAIL_HOST}
+      MAIL_PORT: ${MAIL_PORT}
+      MAIL_USER: ${MAIL_USER}
+      MAIL_PASS: ${MAIL_PASS}
+      MAIL_FROM: ${MAIL_FROM}
+    ports:
+      - "${API_GATEWAY_PORT}:${API_GATEWAY_PORT}"
+    depends_on:
+      - db-service
+    networks:
+      - wallet-net
+
+  # Cliente Web Vue.js servido con Nginx
+  frontend-client:
+    container_name: wallet-frontend
+    build:
+      context: ./frontend-client
+      dockerfile: Dockerfile
+    restart: always
+    ports:
+      - "8080:4173"
+    depends_on:
+      - api-gateway
+    networks:
+      - wallet-net
+
 volumes:
   mysql_data:
 
