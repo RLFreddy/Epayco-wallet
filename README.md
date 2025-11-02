@@ -1,6 +1,60 @@
-# Epayco-wallet
+# Prueba Técnica: Billetera Virtual - ePayco
 
-Este documento proporciona las instrucciones necesarias para configurar y ejecutar el proyecto **Epayco-wallet** utilizando Docker y Docker Compose.
+## Desarrollador Full Stack - Freddy Rojas
+
+Este proyecto es una solución al desafío técnico para la posición de Desarrollador Full Stack en ePayco. Consiste en una billetera virtual desarrollada con una arquitectura de microservicios, un frontend moderno y completamente contenerizada para un despliegue sencillo.
+
+---
+
+### ✨ Features Implementadas
+
+- [x] **Registro de Clientes:** Creación de nuevos usuarios en el sistema.
+- [x] **Recarga de Billetera:** Añadir fondos a la cuenta de un cliente.
+- [x] **Proceso de Pago en dos pasos:**
+  - [x] Solicitud de pago y envío de token de confirmación por email.
+  - [x] Confirmación de pago con token y débito del saldo.
+- [x] **Consulta de Saldo:** Verificación del saldo disponible.
+
+---
+
+### 🛠️ Stack Tecnológico
+
+A continuación, el stack utilizado para construir esta solución:
+
+**Frontend:**
+
+- ![Vue.js](https://img.shields.io/badge/Vue.js-35495E?style=for-the-badge&logo=vue.js&logoColor=4FC08D)
+- ![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white)
+- ![Pinia](https://img.shields.io/badge/Pinia-FFC300?style=for-the-badge&logo=pinia&logoColor=black)
+- ![Axios](https://img.shields.io/badge/Axios-5A29E4?style=for-the-badge&logo=axios&logoColor=white)
+- ![Shadcn/ui](https://img.shields.io/badge/shadcn/ui-000000?style=for-the-badge&logo=shadcn-ui&logoColor=white)
+- ![Zod](https://img.shields.io/badge/Zod-3E67B1?style=for-the-badge&logo=zod&logoColor=white)
+
+**Backend (Microservicios):**
+
+- ![NestJS](https://img.shields.io/badge/NestJS-E0234E?style=for-the-badge&logo=nestjs&logoColor=white)
+- ![TypeORM](https://img.shields.io/badge/TypeORM-E0234E?style=for-the-badge)
+- ![MySQL](https://img.shields.io/badge/MySQL-4479A1?style=for-the-badge&logo=mysql&logoColor=white)
+
+**DevOps & Herramientas:**
+
+- ![Docker](https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white)
+- ![Swagger](https://img.shields.io/badge/Swagger-85EA2D?style=for-the-badge&logo=swagger&logoColor=black)
+- ![Postman](https://img.shields.io/badge/Postman-FF6C37?style=for-the-badge&logo=postman&logoColor=white)
+
+---
+
+### 🏗️ Arquitectura de la Solución
+
+El proyecto sigue una arquitectura de microservicios para desacoplar responsabilidades y mejorar la escalabilidad.
+
+- **`Cliente (Vue.js)`**: Interfaz de usuario que consume el API Gateway.
+- **`API Gateway (NestJS)`**: Servicio de cara al cliente. Orquesta las peticiones y se comunica con los servicios internos. No tiene acceso directo a la BD.
+- **`Servicio de Billetera (NestJS)`**: Microservicio que gestiona toda la lógica de negocio y tiene acceso exclusivo a la base de datos MySQL a través de TypeORM.
+
+---
+
+## Instrucciones necesarias para configurar y ejecutar el proyecto utilizando Docker y Docker Compose
 
 ## Requisitos Previos
 
@@ -45,6 +99,8 @@ Una vez creado, abre y edita el archivo `.env` para configurar tus propias crede
 
 El servidor SMTP **Resend** configurado por defecto en el archivo de ejemplo está asociado a una cuenta específica y no funcionará para otros usuarios.  
 Debes reemplazarlo con tu propio proveedor de correo para que el envío de emails funcione.
+
+<img src="./assets/config-env.png" alt="Configurar el servidor SMTP" width="600">
 
 > **Nota sobre Gmail:** Para usar Gmail, necesitas generar una "Contraseña de Aplicación" desde la configuración de seguridad de tu cuenta de Google. No uses tu contraseña de inicio de sesión principal.
 
