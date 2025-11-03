@@ -1,8 +1,6 @@
-# Prueba Técnica: Billetera Virtual - ePayco
-
 ## Desarrollador Full Stack - Freddy Rojas
 
-Este proyecto es una solución al desafío técnico para la posición de Desarrollador Full Stack en ePayco. Consiste en una billetera virtual desarrollada con una arquitectura de microservicios, un frontend moderno y completamente contenerizada para un despliegue sencillo.
+Este proyecto consiste en una billetera virtual desarrollada con una arquitectura de microservicios, un frontend moderno y completamente contenerizada para un despliegue sencillo.
 
 ---
 
