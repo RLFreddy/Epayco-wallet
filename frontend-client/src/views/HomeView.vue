@@ -2,7 +2,6 @@
   <div class="container mx-auto p-4 md:p-8">
     <header class="text-center mb-10">
       <h1 class="text-4xl font-bold tracking-tight text-primary">Billetera Virtual Epayco</h1>
-      <p class="text-muted-foreground mt-2">Prueba Técnica Desarrollador Full Stack</p>
     </header>
 
     <main class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
